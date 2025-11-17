@@ -4,7 +4,11 @@ const browserApi = typeof browser !== 'undefined' ? browser : chrome;
 const syncStorage = new self.SyncStorage();
 
 // Первичная инициализация для сервис-воркера, который может подниматься без событий.
-syncStorage.init();
+let initPromise = syncStorage.init();
+
+function ensureInit() {
+  return initPromise;
+}
 
 const DOMAIN_MATCH = '*://*.2ch.su/*';
 
@@ -23,15 +27,16 @@ async function broadcastState(domain) {
 }
 
 browserApi.runtime.onInstalled.addListener(() => {
-  syncStorage.init();
+  initPromise = syncStorage.init();
 });
 
 browserApi.runtime.onStartup.addListener(() => {
-  syncStorage.init();
+  initPromise = syncStorage.init();
 });
 
 browserApi.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   const handler = async () => {
+    await ensureInit();
     const domain = message.domain;
     switch (message.type) {
       case 'GET_STATE': {
