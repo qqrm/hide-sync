@@ -1,0 +1,118 @@
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #202124;
+}
+
+body {
+  background: #f1f3f4;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card.info ul {
+  padding-left: 20px;
+  margin: 8px 0 0;
+}
+
+.card.info li {
+  margin-bottom: 6px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field input {
+  padding: 10px 12px;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 4px;
+}
+
+button {
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  background: #fff;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button.primary {
+  background: #0b57d0;
+  color: #fff;
+  border-color: #0b57d0;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px 16px;
+  margin: 0;
+}
+
+.status-grid dt {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.status-grid dd {
+  margin: 0;
+  color: #555;
+}
+
+.hint {
+  color: #666;
+  font-size: 13px;
+}
+
+#message {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  display: none;
+}
+
+#message.success {
+  display: block;
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
+}
+
+#message.error {
+  display: block;
+  background: #ffebee;
+  color: #b71c1c;
+  border: 1px solid #ffcdd2;
+}

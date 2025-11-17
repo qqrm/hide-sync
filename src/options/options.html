@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hide Sync</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <h1>Настройки синхронизации скрытых тредов</h1>
+      <section class="card">
+        <h2>Персональный токен доступа GitHub</h2>
+        <label class="field">
+          <span>Токен (scope: gist)</span>
+          <input id="token" type="password" autocomplete="off" />
+        </label>
+        <div class="actions">
+          <button id="save">Сохранить токен</button>
+          <button id="validate" class="primary">Проверить соединение</button>
+        </div>
+        <p class="hint">Токен хранится только в браузере и используется для доступа к приватному Gist.</p>
+      </section>
+
+      <section class="card" id="status-card">
+        <h2>Статус</h2>
+        <dl class="status-grid">
+          <div>
+            <dt>Синхронизация</dt>
+            <dd id="sync-enabled">—</dd>
+          </div>
+          <div>
+            <dt>Последняя синхронизация</dt>
+            <dd id="last-sync">—</dd>
+          </div>
+          <div>
+            <dt>Gist ID</dt>
+            <dd id="gist-id">—</dd>
+          </div>
+          <div>
+            <dt>Ошибка</dt>
+            <dd id="last-error">—</dd>
+          </div>
+        </dl>
+        <div class="actions">
+          <button id="force-sync">Синхронизировать сейчас</button>
+        </div>
+      </section>
+
+      <section class="card info">
+        <h2>Как это работает</h2>
+        <ul>
+          <li>Состояние скрытых тредов хранится в файле <strong>hide-sync.json</strong> внутри приватного Gist.</li>
+          <li>При отсутствии токена расширение работает только локально.</li>
+          <li>Обновления отправляются в Gist спустя несколько секунд после изменения списка.</li>
+        </ul>
+      </section>
+
+      <div id="message" role="status"></div>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

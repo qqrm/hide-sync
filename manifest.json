@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Hide Sync",
+  "description": "Синхронизация скрытых тредов 2ch.su через GitHub Gist",
+  "version": "0.1.0",
+  "permissions": ["storage", "alarms", "tabs"],
+  "host_permissions": ["https://2ch.su/*", "https://*.2ch.su/*", "https://api.github.com/*"],
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://2ch.su/*", "https://*.2ch.su/*"],
+      "js": ["src/content/contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "src/options/options.html",
+  "action": {
+    "default_title": "Hide Sync"
+  }
+}
